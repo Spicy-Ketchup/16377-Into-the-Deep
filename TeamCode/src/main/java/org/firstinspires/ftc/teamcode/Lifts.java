@@ -8,7 +8,9 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class Lifts {
     DcMotorEx LLarm;
     DcMotorEx LRarm;
-    public static double p = .006, i = 0, d = 0.0;
+    public static double p = 0, i = 0, d = 0.0;
+    public static double f = 0;
+    private final double ticks_in_degrees = .36;
     public PIDController controllerL;
     public Lifts (HardwareMap hardwareMap){
          LLarm = hardwareMap.get(DcMotorEx.class,"ll");
@@ -38,10 +40,10 @@ public class Lifts {
         double LLarmPID = controllerL.calculate(LLarmPos,liftTarget);
         double LRarmPID = controllerL.calculate(LRarmPos, liftTarget);
 
+        double ff = Math.cos(Math.toRadians(liftTarget/ticks_in_degrees))*f;
 
-
-        double LLPower = LLarmPID;
-        double LRPower = LRarmPID;
+        double LLPower = LLarmPID+ff;
+        double LRPower = LRarmPID+ff;
 
         LLarm.setPower(LLPower);
         LRarm.setPower(LRPower);

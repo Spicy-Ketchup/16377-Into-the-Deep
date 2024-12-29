@@ -69,9 +69,10 @@ public class Robot
     public DcMotor rightBack = null;
 
     public Servo claw = null;
-    public Servo wrist = null;
     public Servo elbow = null;
-    public Servo bucket = null;
+    public Servo Cwrist = null;
+    public Servo Swrist1 = null;
+    public Servo Swrist2 = null;
     public CRServo Spintake1 = null;
     public CRServo Spintake2 = null;
     public ColorSensor colorSensor = null;
@@ -108,10 +109,11 @@ public class Robot
         leftBack  = hwMap.get(DcMotor.class, "lb");
         rightBack = hwMap.get(DcMotor.class, "rb");
 
-    //   claw = hwMap.get(Servo.class, "claw");
-    //    wrist = hwMap.get(Servo.class, "wrist");
-    //    elbow = hwMap.get(Servo.class, "elbow");
-    //    bucket = hwMap.get(Servo.class, "bucket");
+    //    claw = hwMap.get(Servo.class, "claw");
+    //    Cwrist = hwMap.get(Servo.class, "Cwrist");
+        //Swrist1 = hwMap.get(Servo.class, "Swrist1");
+        //Swrist2 = hwMap.get(Servo.class, "Swrist2");
+        //elbow = hwMap.get(Servo.class, "elbow");
     //    Spintake1 = hwMap.get(CRServo.class, "S1");
     //    Spintake2 = hwMap.get(CRServo.class, "S2");
 
