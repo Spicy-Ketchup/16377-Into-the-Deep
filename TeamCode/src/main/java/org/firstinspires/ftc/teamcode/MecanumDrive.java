@@ -64,29 +64,29 @@ public class MecanumDrive {
 
         // drive model parameters
         public double inPerTick = 1; // If you're using OTOS/Pinpoint leave this at 1 (all values will be in inches, 1 tick = 1 inch)
-        public double lateralInPerTick = 0.7128008669543694; // Tune this with LateralRampLogger (even if you use OTOS/Pinpoint)
-        public double trackWidthTicks = 12.829516573140307;
+        public double lateralInPerTick = 0.6287574864913491; // Tune this with LateralRampLogger (even if you use OTOS/Pinpoint)
+        public double trackWidthTicks = 13.152883422845617;
 
         // feedforward parameters (in tick units)
-        public double kS = 1.0906321163130241;
-        public double kV = 0.12900557399921603;
-        public double kA = 0.01;
+        public double kS = 1.5457075109555207;
+        public double kV = 0.12858078694588776;
+        public double kA = 0.03;
 
         // path profile parameters (in inches)
-        public double maxWheelVel = 50;
-        public double minProfileAccel = -30;
-        public double maxProfileAccel = 50;
+        public double maxWheelVel = 72;
+        public double minProfileAccel = -65;
+        public double maxProfileAccel = 72;
 
         // turn profile parameters (in radians)
         public double maxAngVel = Math.PI; // shared with path
         public double maxAngAccel = Math.PI;
 
         // path controller gains
-        public double axialGain = 6;
-        public double lateralGain = 4.8;
+        public double axialGain = 7;
+        public double lateralGain = 5;
         public double headingGain = 5; // shared with turn
 
-        public double axialVelGain = 0;
+        public double axialVelGain = 0.6;
         public double lateralVelGain = 0;
         public double headingVelGain = 0; // shared with turn
     }
@@ -105,11 +105,30 @@ public class MecanumDrive {
             ));
     public final VelConstraint customVelConstraint =
             new MinVelConstraint(Arrays.asList(
-                    kinematics.new WheelVelConstraint(40),
+                    kinematics.new WheelVelConstraint(50),
+                    new AngularVelConstraint(PARAMS.maxAngVel)
+            ));
+
+    public final VelConstraint customVelConstraint2 =
+            new MinVelConstraint(Arrays.asList(
+                    kinematics.new WheelVelConstraint(55),
+                    new AngularVelConstraint(PARAMS.maxAngVel)
+            ));
+    public final VelConstraint customVelConstraint3 =
+            new MinVelConstraint(Arrays.asList(
+                    kinematics.new WheelVelConstraint(60),
+                    new AngularVelConstraint(PARAMS.maxAngVel)
+            ));
+    public final VelConstraint customVelConstraint4 =
+            new MinVelConstraint(Arrays.asList(
+                    kinematics.new WheelVelConstraint(90),
                     new AngularVelConstraint(PARAMS.maxAngVel)
             ));
     public final AccelConstraint defaultAccelConstraint =
             new ProfileAccelConstraint(PARAMS.minProfileAccel, PARAMS.maxProfileAccel);
+
+    public final AccelConstraint customAccelConstraint =
+            new ProfileAccelConstraint(PARAMS.minProfileAccel, 90);
 
     public final DcMotorEx leftFront, leftBack, rightBack, rightFront;
 
@@ -145,9 +164,10 @@ public class MecanumDrive {
 
             // TODO: reverse encoders if needed
             leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-            leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
             rightFront.setDirection(DcMotorSimple.Direction.FORWARD);
+            leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
             rightBack.setDirection(DcMotorSimple.Direction.FORWARD);
+
         }
 
         @Override
@@ -236,10 +256,11 @@ public class MecanumDrive {
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // TODO: reverse motor directions if needed
-        leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-        leftBack.setDirection(DcMotorSimple.Direction.FORWARD);
-        rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
-        rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftFront.setDirection(DcMotor.Direction.REVERSE);
+        rightFront.setDirection(DcMotor.Direction.FORWARD);
+        leftBack.setDirection(DcMotor.Direction.REVERSE);
+        rightBack.setDirection(DcMotor.Direction.FORWARD);
+
 
         // TODO: make sure your config has an IMU with this name (can be BNO or BHI)
         //   see https://ftc-docs.firstinspires.org/en/latest/hardware_and_software_configuration/configuring/index.html

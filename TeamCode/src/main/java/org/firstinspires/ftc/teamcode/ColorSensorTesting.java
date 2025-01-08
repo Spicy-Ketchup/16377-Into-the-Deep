@@ -2,11 +2,13 @@ package org.firstinspires.ftc.teamcode;
 
 
 import com.qualcomm.hardware.limelightvision.LLResult;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name="LL-Sample Detection and Correction")
+@Disabled
 public class ColorSensorTesting extends LinearOpMode {
     Robot robot = new Robot();
     double speed_x = 0;
@@ -16,14 +18,14 @@ public class ColorSensorTesting extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        robot.limelight.pipelineSwitch(0);
-        robot.limelight.start();
+     //   robot.limelight.pipelineSwitch(0);
+     //   robot.limelight.start();
 
         waitForStart();
 
         while (opModeIsActive()) {
 
-            LLResult result = robot.limelight.getLatestResult();
+      //      LLResult result = robot.limelight.getLatestResult();
 
             if (gamepad1.triangle)
                 llOveride = true;
@@ -31,13 +33,13 @@ public class ColorSensorTesting extends LinearOpMode {
                 llOveride = false;
 
             if(!llOveride) {
-                if (result.getTx() == 0)
+        //        if (result.getTx() == 0)
                     speed_x = 0;
-                else if (result.getTx() > 4.25)
+        //        else if (result.getTx() > 4.25)
                     speed_x = .03;
-                else if (result.getTx() < -4.25)
+        //        else if (result.getTx() < -4.25)
                     speed_x = -.03;
-                else
+          //      else
                     speed_x = 0;
 
 
@@ -53,9 +55,9 @@ public class ColorSensorTesting extends LinearOpMode {
                 robot.rightBack.setPower(-gamepad1.left_stick_y + gamepad1.left_stick_x - gamepad1.right_stick_x);
             }
 
-                telemetry.addData("tx", result.getTx());
-                telemetry.addData("ty", result.getTy());
-                 telemetry.addData("ta", result.getTa());
+          //      telemetry.addData("tx", result.getTx());
+          //      telemetry.addData("ty", result.getTy());
+          //       telemetry.addData("ta", result.getTa());
 
 
             //     int red = robot.colorSensor.red();

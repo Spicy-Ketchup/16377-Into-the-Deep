@@ -2,11 +2,13 @@ package org.firstinspires.ftc.teamcode;
 
 
 import com.qualcomm.hardware.limelightvision.LLResult;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name="LLCorrection")
+@Disabled
 public class LLCorrectionTest extends LinearOpMode {
     Robot robot = new Robot();
     double speed_x = 0;
@@ -15,8 +17,8 @@ public class LLCorrectionTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
-        robot.limelight.pipelineSwitch(0);
-        robot.limelight.start();
+    //    robot.limelight.pipelineSwitch(0);
+    //    robot.limelight.start();
 
         waitForStart();
 
@@ -26,18 +28,18 @@ public class LLCorrectionTest extends LinearOpMode {
                 ElapsedTime detectionTime = new ElapsedTime();
                 ElapsedTime forceTime = new ElapsedTime();
                 while (detectionTime.seconds() < 1.5 && forceTime.seconds()<3 && opModeIsActive()) {
-                    LLResult result = robot.limelight.getLatestResult();
+           //         LLResult result = robot.limelight.getLatestResult();
 
-                    if (result.getTx() == 0) {
+             //       if (result.getTx() == 0) {
                         speed_x = -0.2;
                         detectionTime.reset();
-                    }else if (result.getTx() > 4.25) {
+             //       }else if (result.getTx() > 4.25) {
                         speed_x = .25;
                         detectionTime.reset();
-                    }else if (result.getTx() < -4.25) {
+             //       }else if (result.getTx() < -4.25) {
                         speed_x = -.25;
                         detectionTime.reset();
-                    }else
+             //       }else
                         speed_x = 0;
 
 
@@ -45,9 +47,9 @@ public class LLCorrectionTest extends LinearOpMode {
                     robot.rightFront.setPower(-speed_x);
                     robot.leftBack.setPower(-speed_x);
                     robot.rightBack.setPower(speed_x);
-                    telemetry.addData("tx", result.getTx());
-                    telemetry.addData("ty", result.getTy());
-                    telemetry.addData("ta", result.getTa());
+                //    telemetry.addData("tx", result.getTx());
+                //    telemetry.addData("ty", result.getTy());
+                //    telemetry.addData("ta", result.getTa());
                     telemetry.update();
                 }
                 ElapsedTime forward = new ElapsedTime();

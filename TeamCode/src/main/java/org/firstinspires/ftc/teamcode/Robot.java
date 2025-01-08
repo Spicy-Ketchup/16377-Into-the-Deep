@@ -68,16 +68,9 @@ public class Robot
     public DcMotor leftBack = null;
     public DcMotor rightBack = null;
 
-    public Servo claw = null;
-    public Servo elbow = null;
-    public Servo Cwrist = null;
-    public Servo Swrist1 = null;
-    public Servo Swrist2 = null;
-    public CRServo Spintake1 = null;
-    public CRServo Spintake2 = null;
     public ColorSensor colorSensor = null;
-    public RevBlinkinLedDriver LED = null;
-    public Limelight3A limelight = null;
+ //   public RevBlinkinLedDriver LED = null;
+ //   public Limelight3A limelight = null;
 
 
 
@@ -109,24 +102,15 @@ public class Robot
         leftBack  = hwMap.get(DcMotor.class, "lb");
         rightBack = hwMap.get(DcMotor.class, "rb");
 
-    //    claw = hwMap.get(Servo.class, "claw");
-    //    Cwrist = hwMap.get(Servo.class, "Cwrist");
-        //Swrist1 = hwMap.get(Servo.class, "Swrist1");
-        //Swrist2 = hwMap.get(Servo.class, "Swrist2");
-        //elbow = hwMap.get(Servo.class, "elbow");
-    //    Spintake1 = hwMap.get(CRServo.class, "S1");
-    //    Spintake2 = hwMap.get(CRServo.class, "S2");
 
-    //    colorSensor = hwMap.get(ColorSensor.class, "CS");
+        colorSensor = hwMap.get(ColorSensor.class, "CS");
      //   LED = hwMap.get(RevBlinkinLedDriver.class, "LED");
-        limelight = hwMap.get(Limelight3A.class, "LL");
+     //   limelight = hwMap.get(Limelight3A.class, "LL");
 
-          leftFront.setDirection(DcMotor.Direction.REVERSE);
-        rightFront.setDirection(DcMotor.Direction.REVERSE);
-        leftBack.setDirection(DcMotor.Direction.FORWARD);
-        rightBack.setDirection(DcMotor.Direction.REVERSE);
-
-     //   Spintake1.setDirection(CRServo.Direction.REVERSE);
+        leftFront.setDirection(DcMotor.Direction.REVERSE);
+        rightFront.setDirection(DcMotor.Direction.FORWARD);
+        leftBack.setDirection(DcMotor.Direction.REVERSE);
+        rightBack.setDirection(DcMotor.Direction.FORWARD);
 
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -137,8 +121,7 @@ public class Robot
         rightFront.setPower(0);
         leftBack.setPower(0);
         rightBack.setPower(0);
-      //  Spintake1.setPower(0);
-       // Spintake2.setPower(0);
+
        // LED.setPattern(RevBlinkinLedDriver.BlinkinPattern.BLACK);
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.

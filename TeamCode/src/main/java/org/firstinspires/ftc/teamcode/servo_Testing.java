@@ -29,7 +29,7 @@ public class servo_Testing extends OpMode {
 // place names of servos into names list here
         // example: names.add("sir vo");
 
-        names.add("elbow");
+        names.add("wrist");
 
         for (String name: names) {
             servo.add(hardwareMap.get(Servo.class, name));
@@ -72,7 +72,6 @@ public class servo_Testing extends OpMode {
             servoPos = 0.0;
 
         theServo = servo.get(servoIndex);
-
         theServo.setPosition(servoPos);
         telemetry.addData("testing servo", names.get(servoIndex));
         telemetry.addData("servo pos", servoPos);
