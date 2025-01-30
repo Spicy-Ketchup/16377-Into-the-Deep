@@ -70,7 +70,7 @@ public class Robot
 
     public ColorSensor colorSensor = null;
  //   public RevBlinkinLedDriver LED = null;
- //   public Limelight3A limelight = null;
+    public Limelight3A limelight = null;
 
 
 
@@ -103,7 +103,7 @@ public class Robot
         rightBack = hwMap.get(DcMotor.class, "rb");
 
 
-        colorSensor = hwMap.get(ColorSensor.class, "CS");
+     //   colorSensor = hwMap.get(ColorSensor.class, "CS");
      //   LED = hwMap.get(RevBlinkinLedDriver.class, "LED");
      //   limelight = hwMap.get(Limelight3A.class, "LL");
 

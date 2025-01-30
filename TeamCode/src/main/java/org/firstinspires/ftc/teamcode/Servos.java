@@ -1,14 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-import static org.firstinspires.ftc.teamcode.Lm3Teleop.ld;
-import static org.firstinspires.ftc.teamcode.Lm3Teleop.lf;
-import static org.firstinspires.ftc.teamcode.Lm3Teleop.li;
-import static org.firstinspires.ftc.teamcode.Lm3Teleop.lp;
-
-import com.arcrobotics.ftclib.controller.PIDController;
 import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 

@@ -1,10 +1,10 @@
 package org.firstinspires.ftc.teamcode;
 
-import static org.firstinspires.ftc.teamcode.Lm3Teleop.hd;
-import static org.firstinspires.ftc.teamcode.Lm3Teleop.hf;
-import static org.firstinspires.ftc.teamcode.Lm3Teleop.hi;
-import static org.firstinspires.ftc.teamcode.Lm3Teleop.hp;
-import static org.firstinspires.ftc.teamcode.Lm3Teleop.ticks_in_degrees;
+import static org.firstinspires.ftc.teamcode.Red_Teleop.hd;
+import static org.firstinspires.ftc.teamcode.Red_Teleop.hf;
+import static org.firstinspires.ftc.teamcode.Red_Teleop.hi;
+import static org.firstinspires.ftc.teamcode.Red_Teleop.hp;
+import static org.firstinspires.ftc.teamcode.Red_Teleop.ticks_in_degrees;
 
 
 import com.arcrobotics.ftclib.controller.PIDController;
@@ -20,7 +20,7 @@ public class Slide {
     public Slide(HardwareMap hardwareMap) {
         Harm = hardwareMap.get(DcMotorEx.class, "harm");
         Harm.setDirection(DcMotor.Direction.REVERSE);
-        Harm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        Harm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         Harm.setPower(0);
         Harm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         Harm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);

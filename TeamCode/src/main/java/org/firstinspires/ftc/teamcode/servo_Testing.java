@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -7,7 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import java.util.ArrayList;
 
 @TeleOp
-//@Disabled
+@Disabled
 public class servo_Testing extends OpMode {
 
     ArrayList<Servo> servo = new ArrayList<>();
@@ -29,7 +30,8 @@ public class servo_Testing extends OpMode {
 // place names of servos into names list here
         // example: names.add("sir vo");
 
-        names.add("wrist");
+        names.add("LP");
+
 
         for (String name: names) {
             servo.add(hardwareMap.get(Servo.class, name));

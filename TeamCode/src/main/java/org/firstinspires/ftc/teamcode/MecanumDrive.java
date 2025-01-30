@@ -65,16 +65,16 @@ public class MecanumDrive {
         // drive model parameters
         public double inPerTick = 1; // If you're using OTOS/Pinpoint leave this at 1 (all values will be in inches, 1 tick = 1 inch)
         public double lateralInPerTick = 0.6287574864913491; // Tune this with LateralRampLogger (even if you use OTOS/Pinpoint)
-        public double trackWidthTicks = 13.152883422845617;
+        public double trackWidthTicks = 13.075446701255043;
 
         // feedforward parameters (in tick units)
-        public double kS = 1.5457075109555207;
-        public double kV = 0.12858078694588776;
+        public double kS = 1.4224512279427937;
+        public double kV = 0.12946292972101425;
         public double kA = 0.03;
 
         // path profile parameters (in inches)
         public double maxWheelVel = 72;
-        public double minProfileAccel = -65;
+        public double minProfileAccel = -72;
         public double maxProfileAccel = 72;
 
         // turn profile parameters (in radians)
@@ -86,7 +86,7 @@ public class MecanumDrive {
         public double lateralGain = 5;
         public double headingGain = 5; // shared with turn
 
-        public double axialVelGain = 0.6;
+        public double axialVelGain = 0;
         public double lateralVelGain = 0;
         public double headingVelGain = 0; // shared with turn
     }
@@ -124,11 +124,26 @@ public class MecanumDrive {
                     kinematics.new WheelVelConstraint(90),
                     new AngularVelConstraint(PARAMS.maxAngVel)
             ));
+
+    public final VelConstraint customVelConstraint5 =
+            new MinVelConstraint(Arrays.asList(
+                    kinematics.new WheelVelConstraint(40),
+                    new AngularVelConstraint(PARAMS.maxAngVel)
+            ));
     public final AccelConstraint defaultAccelConstraint =
             new ProfileAccelConstraint(PARAMS.minProfileAccel, PARAMS.maxProfileAccel);
 
     public final AccelConstraint customAccelConstraint =
             new ProfileAccelConstraint(PARAMS.minProfileAccel, 90);
+
+    public final AccelConstraint customAccelConstraint2 =
+            new ProfileAccelConstraint(-35, 40);
+
+    public final VelConstraint customVelConstraint6 =
+            new MinVelConstraint(Arrays.asList(
+                    kinematics.new WheelVelConstraint(45),
+                    new AngularVelConstraint(PARAMS.maxAngVel)
+            ));
 
     public final DcMotorEx leftFront, leftBack, rightBack, rightFront;
 
