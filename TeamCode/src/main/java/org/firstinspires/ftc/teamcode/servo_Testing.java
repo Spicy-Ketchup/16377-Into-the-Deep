@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 import java.util.ArrayList;
 
 @TeleOp
-@Disabled
 public class servo_Testing extends OpMode {
 
     ArrayList<Servo> servo = new ArrayList<>();

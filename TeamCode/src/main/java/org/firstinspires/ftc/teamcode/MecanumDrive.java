@@ -130,6 +130,12 @@ public class MecanumDrive {
                     kinematics.new WheelVelConstraint(40),
                     new AngularVelConstraint(PARAMS.maxAngVel)
             ));
+
+    public final VelConstraint customVelConstraint7 =
+            new MinVelConstraint(Arrays.asList(
+                    kinematics.new WheelVelConstraint(120),
+                    new AngularVelConstraint(PARAMS.maxAngVel)
+            ));
     public final AccelConstraint defaultAccelConstraint =
             new ProfileAccelConstraint(PARAMS.minProfileAccel, PARAMS.maxProfileAccel);
 
@@ -138,6 +144,9 @@ public class MecanumDrive {
 
     public final AccelConstraint customAccelConstraint2 =
             new ProfileAccelConstraint(-35, 40);
+
+    public final AccelConstraint customAccelConstraint3 =
+            new ProfileAccelConstraint(-35, 110);
 
     public final VelConstraint customVelConstraint6 =
             new MinVelConstraint(Arrays.asList(

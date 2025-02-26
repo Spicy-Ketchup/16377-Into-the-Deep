@@ -156,7 +156,7 @@ public class Testing extends LinearOpMode {
             rightBack.setPower((-gamepad1.left_stick_y + gamepad1.left_stick_x - gamepad1.right_stick_x)*speed);
             telemetry.update();
            // lifts.update(targeto);
-            slide.update(0);
+           // slide.update(0);
         }
     }
 }

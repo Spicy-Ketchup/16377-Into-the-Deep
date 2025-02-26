@@ -266,7 +266,7 @@ public class Blue_Teleop extends LinearOpMode {
                 LED.setPattern(RevBlinkinLedDriver.BlinkinPattern.WHITE);
 
             lifts.update(LiftTarget, resetting);
-                    slide.update(HarmTarget);
+                    slide.update(HarmTarget,0);
                     telemetry.addData("Htarget", HarmTarget);
                     telemetry.addData("Hpos", slide.pos());
                     telemetry.addData("lift target", LiftTarget);

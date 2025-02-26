@@ -30,7 +30,7 @@ public class Slide {
         return Harm.getCurrentPosition();
     }
 
-    public void update(int harmTarget) {
+    public void update(int harmTarget, int custom) {
         controllerH.setPID(hp, hi, hd);
 
 
@@ -42,7 +42,20 @@ public class Slide {
 
         double HarmPower = HarmPID+ff;
 
+        if (custom == 0)
         Harm.setPower(HarmPower);
+        else if (custom == 1)
+            Harm.setPower(.2);
+        else if (custom == 2)
+            Harm.setPower(-.2);
+        else if (custom == 3){
+            Harm.setPower(-.5);
+            Harm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+            Harm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        } else if (custom == 4){
+            Harm.setPower(0);
+        }
+
     }
 }
 

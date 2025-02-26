@@ -5,15 +5,16 @@ import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Config
-@TeleOp(name="A - Red Teleop")
-//@Disabled
-public class Red_Teleop extends LinearOpMode {
+@TeleOp(name="Ner")
+@Disabled
+public class JUStInKas extends LinearOpMode {
 
     Robot robot = new Robot();
     public ColorSensor colorSensor = null;
@@ -57,8 +58,8 @@ public class Red_Teleop extends LinearOpMode {
 
     public static double RPI = 0.86;
     public static double LPI = 0.51;
-    public static double RPN = 0.73;
-    public static double LPN = 0.75;
+    public static double RPN = 0.74;
+    public static double LPN = 0.74;
     @Override
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
@@ -192,7 +193,7 @@ public class Red_Teleop extends LinearOpMode {
                     if (gamepad2.dpad_up)
                         LiftTarget = 1050;
                     else if (gamepad2.dpad_down)
-                        LiftTarget = 100;
+                        LiftTarget = 120;
                     else if (gamepad2.a)
                         liftState = lift_State.up;
                     break;
@@ -216,11 +217,8 @@ public class Red_Teleop extends LinearOpMode {
                         pivotPos = false;
                         spt.reset();
                     }
-                    else if (gamepad1.left_bumper && pivotTime.seconds()>.25){
-                        servos.RPivot.setPosition(!pivotPos ? RPI : RPN);
-                        servos.LPivot.setPosition(!pivotPos ? LPI : LPN);
-                        pivotPos = !pivotPos;
-                        pivotTime.reset();
+                    else if (gamepad1.left_bumper){
+
                     }
                     break;
                 //////////////
@@ -232,12 +230,11 @@ public class Red_Teleop extends LinearOpMode {
                         servos.RPivot.setPosition(RPN);
                         servos.LPivot.setPosition(LPN);
                         pivotPos = false;
-                        pivotTime.reset();
                     }
                     else if (gamepad1.right_bumper && pivotTime.seconds()>.25 && spt.seconds()>.8) {
                         pivotTime.reset();
-                        servos.RPivot.setPosition(!pivotPos ? RPI : RPN);
-                        servos.LPivot.setPosition(!pivotPos ? LPI : LPN);
+                        servos.RPivot.setPosition(pivotPos == false ? RPI : RPN);
+                        servos.LPivot.setPosition(pivotPos == false ? LPI : LPN);
                         pivotPos = !pivotPos;
                     }
                     break;
