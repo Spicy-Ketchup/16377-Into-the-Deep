@@ -80,7 +80,7 @@ public class A_Solo_Auto extends LinearOpMode {
                     drive.rightBack.setPower(.18);
                     return false;})
                 .waitSeconds(1)
-                .stopAndAdd((p) -> {
+                .stopAndAdd((p) -> {//
                     ASlideTarget.set(0);
                     drive.rightFront.setPower(0);
                     drive.leftFront.setPower(0);
