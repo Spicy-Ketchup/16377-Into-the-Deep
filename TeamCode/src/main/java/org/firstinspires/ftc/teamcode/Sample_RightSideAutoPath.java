@@ -44,7 +44,7 @@ public class Sample_RightSideAutoPath extends LinearOpMode {
                 .waitSeconds(0.34)
                 .setReversed(true)
                 .splineToConstantHeading(new Vector2d(14,58), Math.toRadians(0),drive.customVelConstraint2)
-                .splineToConstantHeading(new Vector2d(51,61),Math.toRadians(0), drive.customVelConstraint)
+                .splineToConstantHeading(new Vector2d(45,61),Math.toRadians(0), drive.customVelConstraint)
                 .setTangent(Math.toRadians(0))
                 .splineToConstantHeading(new Vector2d(49,35), Math.toRadians(65))
                 .splineToConstantHeading(new Vector2d(14,42.3), Math.toRadians(65), drive.customVelConstraint2)

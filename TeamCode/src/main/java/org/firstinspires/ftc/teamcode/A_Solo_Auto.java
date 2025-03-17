@@ -48,7 +48,7 @@ public class A_Solo_Auto extends LinearOpMode {
 
 
         TrajectoryActionBuilder sample_5_ascent = drive.actionBuilder(initialPose)
-                .afterTime(0, (p) -> {ALiftTarget.set(245);
+                .afterTime(0, (p) -> {ALiftTarget.set(180);
                     return false;})
                 .afterDisp(5,(p) -> {
                     servos.Relbow.setPosition(.6);
@@ -57,7 +57,7 @@ public class A_Solo_Auto extends LinearOpMode {
                     return false;})
                 .setTangent(270)
                 .splineToConstantHeading(new Vector2d(32.3,12), Math.toRadians(0), drive.customVelConstraint3)
-                .stopAndAdd((p) -> {ALiftTarget.set(1050); return false;})
+                .stopAndAdd((p) -> {ALiftTarget.set(980); return false;})
                 .waitSeconds(0.55)
                 .stopAndAdd((p) -> {servos.claw.setPosition(0); ALiftTarget.set(0); return false;})
                 //Basket2
@@ -113,9 +113,9 @@ public class A_Solo_Auto extends LinearOpMode {
                     servos.wrist.setPosition(0.25);
                     return false;
                 })
-                .afterTime(1, (p) -> {ALiftTarget.set(3000); return false;})
+                .afterTime(1, (p) -> {ALiftTarget.set(2750); return false;})
                 .afterTime(1, (p) -> {
-                    if ((lifts.LLarm.getCurrentPosition() + lifts.LRarm.getCurrentPosition())/2 > 2200){
+                    if ((lifts.LLarm.getCurrentPosition() + lifts.LRarm.getCurrentPosition())/2 > 2000){
                         servos.Relbow.setPosition(.41);
                         servos.Lelbow.setPosition(.41);
                         servos.wrist.setPosition(.7);
@@ -179,9 +179,9 @@ public class A_Solo_Auto extends LinearOpMode {
                     servos.wrist.setPosition(0.25);
                     return false;
                 })
-                .afterTime(1, (p) -> {ALiftTarget.set(3000); return false;})
+                .afterTime(1, (p) -> {ALiftTarget.set(2750); return false;})
                 .afterTime(1, (p) -> {///////
-                    if ((lifts.LLarm.getCurrentPosition() + lifts.LRarm.getCurrentPosition())/2 > 2200){
+                    if ((lifts.LLarm.getCurrentPosition() + lifts.LRarm.getCurrentPosition())/2 > 2000){
                         servos.Relbow.setPosition(.41);
                         servos.Lelbow.setPosition(.41);
                         servos.wrist.setPosition(.7);
@@ -246,9 +246,9 @@ public class A_Solo_Auto extends LinearOpMode {
                     servos.wrist.setPosition(0.25);
                     return false;
                 })//////
-                .afterTime(1.2, (p) -> {ALiftTarget.set(3000); return false;})
+                .afterTime(1.2, (p) -> {ALiftTarget.set(2750); return false;})
                 .afterTime(1.2, (p) -> {
-                    if ((lifts.LLarm.getCurrentPosition() + lifts.LRarm.getCurrentPosition())/2 > 2200){
+                    if ((lifts.LLarm.getCurrentPosition() + lifts.LRarm.getCurrentPosition())/2 > 2000){
                         servos.Relbow.setPosition(.41);
                         servos.Lelbow.setPosition(.41);
                         servos.wrist.setPosition(.7);
@@ -314,9 +314,9 @@ public class A_Solo_Auto extends LinearOpMode {
                     servos.wrist.setPosition(0.25);
                     return false;
                 })
-                .afterTime(1, (p) -> {ALiftTarget.set(3000); return false;})
+                .afterTime(1, (p) -> {ALiftTarget.set(2750); return false;})
                 .afterTime(1, (p) -> {///////
-                    if ((lifts.LLarm.getCurrentPosition() + lifts.LRarm.getCurrentPosition())/2 > 2200){
+                    if ((lifts.LLarm.getCurrentPosition() + lifts.LRarm.getCurrentPosition())/2 > 2000){
                         servos.Relbow.setPosition(.41);
                         servos.Lelbow.setPosition(.41);
                         servos.wrist.setPosition(.7);

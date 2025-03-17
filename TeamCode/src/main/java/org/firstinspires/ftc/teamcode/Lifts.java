@@ -14,15 +14,15 @@ public class Lifts {
     DcMotorEx LLarm;
     DcMotorEx LRarm;
 
-    private final double ticks_in_degrees = 1.49361111111;
+    private final double ticks_in_degrees = 1.06805555556;
     public PIDController controllerL;
     public Lifts (HardwareMap hardwareMap){
          LLarm = hardwareMap.get(DcMotorEx.class,"ll");
          LRarm = hardwareMap.get(DcMotorEx.class,"lr");
          LLarm.setDirection(DcMotor.Direction.FORWARD);
          LRarm.setDirection(DcMotor.Direction.REVERSE);
-         LLarm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-         LRarm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+         LLarm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+         LRarm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
          LLarm.setPower(0);
          LRarm.setPower(0);
          LLarm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -49,16 +49,20 @@ public class Lifts {
         double LLPower = LLarmPID+ff;
         double LRPower = LRarmPID+ff;
 
-        if (!reset) {
-            LLarm.setPower(LLPower);
-            LRarm.setPower(LRPower);
-        } else{
+
+        if (reset){
             LLarm.setPower(-.3);
             LRarm.setPower(-.3);
             LLarm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             LRarm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             LLarm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             LRarm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        } else if (liftTarget == 0 && (LLarm.getCurrentPosition() <15 || LRarm.getCurrentPosition()<15)) {
+            LLarm.setPower(0);
+            LRarm.setPower(0);
+        } else{
+            LLarm.setPower(LLPower);
+            LRarm.setPower(LRPower);
         }
     }
     public int Lpos(){

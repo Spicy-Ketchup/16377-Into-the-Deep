@@ -20,11 +20,10 @@ public class Red_Teleop extends LinearOpMode {
     public RevBlinkinLedDriver LED = null;
     public static int LiftTarget = 0;
     public static int HarmTarget = 0;
-    public static double lp = 0.006, li = 0, ld = 0;
-    public static double lf = 0.05;
+    public static double lp = 0.021, li = 0.00005, ld = 0.00000006;
+    public static double lf = 0.1;
     public static double hp = 0.015, hi = 0, hd = 0;
     public static double hf = 0;
-    public static double ticks_in_degrees = .36;
     double speed = 1.0;
     boolean high = false;
     boolean low = false;
@@ -156,7 +155,7 @@ public class Red_Teleop extends LinearOpMode {
                 //////////////
                 case highBasket:
                     speed = 0.3;
-                    LiftTarget = 3000;
+                    LiftTarget = 2750;
                     if ((lifts.Lpos() + lifts.Rpos())/2 > 2200)
                         servos.wrist.setPosition(.65);
                     if (gamepad2.a)
@@ -165,7 +164,7 @@ public class Red_Teleop extends LinearOpMode {
                 //////////////
                 case lowBasket:
                     speed = 0.3;
-                    LiftTarget = 1200;
+                    LiftTarget = 950;
                     if ((lifts.Lpos() + lifts.Rpos())/2 > 700)
                         servos.wrist.setPosition(.65);
                     if (gamepad2.a)
@@ -179,7 +178,7 @@ public class Red_Teleop extends LinearOpMode {
                     servos.wrist.setPosition(.25);
                     if (gamepad2.dpad_right) {
                         liftState = lift_State.specimenScore;
-                        LiftTarget = 245;
+                        LiftTarget = 175;
                     }
                     else if (gamepad2.a)
                         liftState = lift_State.up;
@@ -190,9 +189,9 @@ public class Red_Teleop extends LinearOpMode {
                     servos.Lelbow.setPosition(.6);
                     servos.wrist.setPosition(.25);
                     if (gamepad2.dpad_up)
-                        LiftTarget = 1050;
+                        LiftTarget = 975;
                     else if (gamepad2.dpad_down)
-                        LiftTarget = 100;
+                        LiftTarget = 150;
                     else if (gamepad2.a)
                         liftState = lift_State.up;
                     break;

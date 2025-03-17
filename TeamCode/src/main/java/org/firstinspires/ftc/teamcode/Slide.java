@@ -4,7 +4,6 @@ import static org.firstinspires.ftc.teamcode.Red_Teleop.hd;
 import static org.firstinspires.ftc.teamcode.Red_Teleop.hf;
 import static org.firstinspires.ftc.teamcode.Red_Teleop.hi;
 import static org.firstinspires.ftc.teamcode.Red_Teleop.hp;
-import static org.firstinspires.ftc.teamcode.Red_Teleop.ticks_in_degrees;
 
 
 import com.arcrobotics.ftclib.controller.PIDController;
@@ -20,7 +19,7 @@ public class Slide {
     public Slide(HardwareMap hardwareMap) {
         Harm = hardwareMap.get(DcMotorEx.class, "harm");
         Harm.setDirection(DcMotor.Direction.REVERSE);
-        Harm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        Harm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         Harm.setPower(0);
         Harm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         Harm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -38,7 +37,7 @@ public class Slide {
 
         double HarmPID = controllerH.calculate(HarmPos,harmTarget);
 
-        double ff = Math.cos(Math.toRadians(harmTarget/ticks_in_degrees))*hf;
+        double ff = Math.cos(Math.toRadians(harmTarget/.36))*hf;
 
         double HarmPower = HarmPID+ff;
 
